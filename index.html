@@ -1,16 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>| Calendario Coba |</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Inicia sesión en Calendario Coba para consultar y organizar eventos.">
+    <title>Calendario Coba</title>
+    <link rel="stylesheet" href="styless.css">
 </head>
 <body>
+    <header class="site-header">
+        <a class="brand" href="#" aria-label="Calendario Coba, inicio">
+            <span class="brand-mark" aria-hidden="true">C</span>
+            <span>Calendario <strong>Coba</strong></span>
+        </a>
+        <span class="header-note">Organiza tus eventos, en un solo lugar</span>
+    </header>
 
-    <h1>| Calendario Coba |</h1>
+    <main>
+        <section class="welcome-panel" aria-labelledby="welcome-title">
+            <p class="eyebrow">Tu espacio para organizarte</p>
+            <h1 id="welcome-title">Cada momento importante, en tu calendario.</h1>
+            <p class="welcome-copy">
+                Consulta tus próximos eventos y mantén tus actividades organizadas con Calendario Coba.
+                Inicia sesión para continuar.
+            </p>
+            <div class="feature-list" aria-label="Beneficios">
+                <p><span aria-hidden="true">✓</span> Ten tus eventos siempre a la vista</p>
+                <p><span aria-hidden="true">✓</span> Organiza tus actividades fácilmente</p>
+                <p><span aria-hidden="true">✓</span> No pierdas de vista tus fechas importantes</p>
+            </div>
+        </section>
 
-    <script src="app.js"></script>
+        <section class="login-card" aria-labelledby="login-title">
+            <div class="card-heading">
+                <p class="eyebrow">Bienvenido de nuevo</p>
+                <h2 id="login-title">Iniciar sesión</h2>
+                <p>Ingresa tus datos para acceder a tu cuenta.</p>
+            </div>
 
+            <form>
+                <div class="form-field">
+                    <label for="email">Correo electrónico</label>
+                    <input id="email" name="email" type="email" placeholder="nombre@ejemplo.com" autocomplete="email">
+                </div>
+                <div class="form-field">
+                    <label for="username">Usuario</label>
+                    <input id="username" name="username" type="text" placeholder="Tu nombre de usuario" autocomplete="username">
+                </div>
+                <div class="form-field">
+                    <label for="password">Contraseña</label>
+                    <input id="password" name="password" type="password" placeholder="Ingresa tu contraseña" autocomplete="current-password">
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-option">
+                        <input type="checkbox" name="remember">
+                        <span>Recordarme</span>
+                    </label>
+                    <button class="text-button" type="button">¿Olvidaste tu contraseña?</button>
+                </div>
+
+                <button class="primary-button" type="button">Iniciar sesión</button>
+                <p class="signup-prompt">
+                    ¿Aún no tienes cuenta?
+                    <button class="text-button signup-button" type="button">Crear cuenta</button>
+                </p>
+                <p class="form-note">Los botones aún no están conectados a un sistema de acceso.</p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Calendario Coba · Organiza tus eventos con claridad.</p>
+    </footer>
 </body>
 </html>
