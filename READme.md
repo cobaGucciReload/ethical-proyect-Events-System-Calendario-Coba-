@@ -7,9 +7,10 @@
 | Vicor  E. Dominguez |        Tech Lead      |
 | Ángel  G. Ramirez   |   Frontend Developer  |
 | Feliep A. Coba      |     Logic Developer   |
-| Óscar  F. Lopez      | Integration Developer |
-| Pending             |       QA Auditor      |
- 
+| Óscar  F. Lopez     | Integration Developer |
+| Miguel A. Machado   |       QA Auditor      |
+|---------------------|-----------------------| 
+
 ## Purpose
  
 Proyecto Ácademico Elaborado por estudiantes de Ingeniería en Sistemas 
@@ -19,9 +20,9 @@ ya mencionados, derechos reservados a nosotros.. Buenas Noches.
 ### Files
 
 index.html
- styless.css
-   app.js
-    READme.md
+styless.css
+app.js
+READme.md
 
 ### Technologies
 
