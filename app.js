@@ -60,3 +60,6 @@ loginForm.addEventListener("submit", (event) => {
         loginButton.querySelector("span").textContent = "Iniciar sesión";
     }, 700);
 });
+
+console.log("Calendario Coba initialized");
+alert(`Welcome ${username}`);
