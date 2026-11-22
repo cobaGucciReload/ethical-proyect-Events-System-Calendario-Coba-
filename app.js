@@ -54,6 +54,9 @@ loginForm.addEventListener("submit", (event) => {
     formMessage.textContent = "";
 
     window.setTimeout(() => {
+        document.getElementById("event-section").style.display = "block";
+
+        renderEvents();
         
         formMessage.textContent = "Tus datos están listos para conectar con el sistema.";
         formMessage.classList.add("success");
@@ -104,7 +107,85 @@ document.addEventListener("click", (event) => {
 
         console.log(events);
     }
+    let events = JSON.parse(localStorage.getItem("events")) || [];
+
+function renderEvents() {
+
+    const eventList = document.getElementById("event-list");
+
+    if (!eventList) return;
+
+    eventList.innerHTML = "";
+
+    events.forEach((evento, index) => {
+
+        const item = document.createElement("li");
+
+        item.innerHTML = `
+            ${evento.nombre} - ${evento.fecha}
+            <button onclick="deleteEvent(${index})">
+                Eliminar
+            </button>
+        `;
+
+        eventList.appendChild(item);
+
+    });
+
+}
+
+function deleteEvent(index) {
+
+    events.splice(index, 1);
+
+    localStorage.setItem(
+        "events",
+        JSON.stringify(events)
+    );
+
+    renderEvents();
+}
+
+document.addEventListener("click", (event) => {
+
+    if (event.target.id === "create-event-btn") {
+
+        const eventName =
+            document.getElementById("event-name");
+
+        const eventDate =
+            document.getElementById("event-date");
+
+        if (
+            eventName.value.trim() === "" ||
+            eventDate.value === ""
+        ) {
+            alert("Completa todos los campos");
+            return;
+        }
+
+        events.push({
+            nombre: eventName.value,
+            fecha: eventDate.value
+        });
+
+        localStorage.setItem(
+            "events",
+            JSON.stringify(events)
+        );
+
+        renderEvents();
+
+        eventName.value = "";
+        eventDate.value = "";
+    }
+
 });
+
+renderEvents();
+    
+});
+
 });
 
 console.log("Calendario Coba initialized");
