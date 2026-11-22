@@ -54,12 +54,57 @@ loginForm.addEventListener("submit", (event) => {
     formMessage.textContent = "";
 
     window.setTimeout(() => {
+        
         formMessage.textContent = "Tus datos están listos para conectar con el sistema.";
         formMessage.classList.add("success");
+        document.getElementById("event-section").style.display = "block";
+
+        loginForm.style.display = "none";
         loginButton.disabled = false;
         loginButton.querySelector("span").textContent = "Iniciar sesión";
     }, 700);
+
+    const events = [];
+
+document.addEventListener("click", (event) => {
+
+    if (event.target.id === "create-event-btn") {
+
+        const eventName =
+            document.getElementById("event-name");
+
+        const eventDate =
+            document.getElementById("event-date");
+
+        if (
+            eventName.value.trim() === "" ||
+            eventDate.value === ""
+        ) {
+            alert("Completa todos los campos");
+            return;
+        }
+
+        events.push({
+            nombre: eventName.value,
+            fecha: eventDate.value
+        });
+
+        const item =
+            document.createElement("li");
+
+        item.textContent =
+            `${eventName.value} - ${eventDate.value}`;
+
+        document
+            .getElementById("event-list")
+            .appendChild(item);
+
+        eventName.value = "";
+        eventDate.value = "";
+
+        console.log(events);
+    }
+});
 });
 
 console.log("Calendario Coba initialized");
-alert(`Welcome ${username}`);
