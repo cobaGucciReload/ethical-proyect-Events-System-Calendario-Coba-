@@ -45,7 +45,7 @@
                 </span> Organiza tus actividades fácilmente</p>
                 <p><span aria-hidden="true">
                     <svg viewBox="0 0 20 20"><path d="m5 10 3 3 7-7"/></svg>
-                </span> No pierdas de vista tus fechas importantes</p>
+                </span> No pierdas de vista tus fechas importantes (Como Proyectos...)</p>
             </div>
             <div class="calendar-preview" aria-label="Vista previa del calendario">
                 <div class="calendar-preview__header">
@@ -131,27 +131,115 @@
                 </p>
             </form>
         </section>
-         <section id="event-section" style="display:none;">
-    <h2>Crear Evento</h2>
+        <section id="dashboard" class="dashboard" aria-labelledby="dashboard-title" hidden>
+            <div class="dashboard-heading">
+                <div>
+                    <p class="eyebrow"><span aria-hidden="true"></span> Tu espacio personal</p>
+                    <h1 id="dashboard-title">Mis Eventos</h1>
+                    <p id="welcome-message" class="welcome-copy"></p>
+                </div>
+                <button id="logout-button" class="secondary-button" type="button">Cerrar sesión</button>
+            </div>
 
-    <input
-        type="text"
-        id="event-name"
-        placeholder="Nombre del evento">
+            <p id="app-message" class="app-message" role="status" aria-live="polite"></p>
 
-    <input
-        type="date"
-        id="event-date">
+            <div class="dashboard-grid">
+                <section class="dashboard-card event-editor" aria-labelledby="event-form-title">
+                    <h2 id="event-form-title">Crear Evento</h2>
+                    <form id="event-form" novalidate>
+                        <label for="event-name">Nombre del evento</label>
+                        <input id="event-name" name="name" type="text" maxlength="120" required>
 
-    <button id="create-event-btn">
-        Crear Evento
-    </button>
+                        <label for="event-description">Descripción</label>
+                        <textarea id="event-description" name="description" rows="3" maxlength="500" required></textarea>
 
-    <h3>Mis Eventos</h3>
+                        <div class="field-pair">
+                            <div>
+                                <label for="event-date">Fecha</label>
+                                <input id="event-date" name="date" type="date" required>
+                            </div>
+                            <div>
+                                <label for="event-time">Hora</label>
+                                <input id="event-time" name="time" type="time" required>
+                            </div>
+                        </div>
 
-    <ul id="event-list"></ul>
-         </section>
-        
+                        <label for="event-category">Categoría</label>
+                        <select id="event-category" name="category" required>
+                            <option value="">Selecciona una categoría</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Trabajo">Trabajo</option>
+                            <option value="Estudio">Estudio</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+
+                        <div class="editor-actions">
+                            <button id="create-event-btn" class="primary-button" type="submit">
+                                <span>Crear Evento</span>
+                            </button>
+                            <button id="cancel-edit-button" class="secondary-button" type="button" hidden>Cancelar</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="dashboard-card calendar-card" aria-labelledby="calendar-title">
+                    <div class="section-title-row">
+                        <h2 id="calendar-title">Calendario</h2>
+                        <div class="calendar-preview__actions">
+                            <button id="calendar-previous" type="button" aria-label="Mes anterior">‹</button>
+                            <button id="calendar-next" type="button" aria-label="Mes siguiente">›</button>
+                        </div>
+                    </div>
+                    <div class="calendar-preview__header">
+                        <div>
+                            <span id="calendar-month" class="calendar-preview__month"></span>
+                            <strong id="calendar-year"></strong>
+                        </div>
+                    </div>
+                    <div id="calendar-grid" class="calendar-preview__grid calendar-live-grid" role="grid" aria-label="Días del mes"></div>
+                    <h3 id="selected-date-title" class="selected-date-title"></h3>
+                    <ul id="selected-date-events" class="selected-date-events"></ul>
+                </section>
+
+                <section class="dashboard-card events-card" aria-labelledby="events-title">
+                    <div class="section-title-row">
+                        <h2 id="events-title">Próximos eventos</h2>
+                    </div>
+                    <ul id="event-list" class="event-list"></ul>
+                    <p id="empty-events" class="empty-state">Todavía no tienes eventos. Crea el primero.</p>
+                </section>
+
+                <section class="dashboard-card focus-card" aria-labelledby="focus-title">
+                    <h2 id="focus-title">Modo Concentración</h2>
+                    <p class="card-description">Dedica un bloque de tiempo a una tarea importante.</p>
+                    <div class="focus-durations" role="group" aria-label="Duración de concentración">
+                        <button type="button" data-focus-minutes="25">25 min</button>
+                        <button type="button" data-focus-minutes="45">45 min</button>
+                        <button type="button" data-focus-minutes="60">60 min</button>
+                    </div>
+                    <p id="focus-timer" class="focus-timer" role="timer" aria-live="off">25:00</p>
+                    <div class="focus-progress" role="progressbar" aria-label="Progreso de concentración" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <span id="focus-progress-bar"></span>
+                    </div>
+                    <p id="focus-status" class="focus-status">Listo para comenzar</p>
+                    <div class="focus-controls">
+                        <button id="focus-start" class="primary-button" type="button"><span>Iniciar</span></button>
+                        <button id="focus-pause" class="secondary-button" type="button" disabled>Pausar</button>
+                        <button id="focus-reset" class="secondary-button" type="button">Reiniciar</button>
+                    </div>
+                </section>
+
+                <section class="dashboard-card stats-card" aria-labelledby="stats-title">
+                    <h2 id="stats-title">Estadísticas</h2>
+                    <div class="stats-grid">
+                        <div><strong id="stat-total">0</strong><span>Total de eventos</span></div>
+                        <div><strong id="stat-pending">0</strong><span>Eventos pendientes</span></div>
+                        <div><strong id="stat-today">0</strong><span>Eventos de hoy</span></div>
+                        <div><strong id="stat-focus">0 min</strong><span>Tiempo de concentración</span></div>
+                    </div>
+                </section>
+            </div>
+        </section>
     </main>
     
 
