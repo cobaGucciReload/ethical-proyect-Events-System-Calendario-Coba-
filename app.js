@@ -23,6 +23,18 @@ const focusProgress = document.querySelector(".focus-progress");
 const focusProgressBar = document.querySelector("#focus-progress-bar");
 const focusStatus = document.querySelector("#focus-status");
 
+console.warn(
+    "[SprecialAccess] Review special access conditions."
+);
+
+console.warn(
+    "[Review Criterias by User Suspect] Review event classification criteria."
+);
+
+console.warn(
+    "[Personal Id Optimization] Review personal information handling."
+);
+
 let activeUser = null;
 let events = [];
 let editingEventId = null;
